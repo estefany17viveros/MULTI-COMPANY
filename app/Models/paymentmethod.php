@@ -10,9 +10,33 @@ class paymentmethod extends Model
     /** @use HasFactory<\Database\Factories\PaymentmethodFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'card_number',
+        'cardholder_name',
+        'expiration_date',
+        'card_type',
+        'available_balance',
+        'user_id',
+    ];
+protected $allowFilter = [
+    'card_number',
+        'cardholder_name',
+        'expiration_date',
+        'card_type',
+        'available_balance',
+        'user_id',
+];
 
-    
-       protected function getAllowIncluded()
+protected $allowSort = [
+ 'card_number',
+        'cardholder_name',
+        'expiration_date',
+        'card_type',
+        'available_balance',
+        'user_id',
+];
+
+protected function getAllowIncluded()
     {
         return collect(get_class_methods($this))
             ->filter(function ($method) {

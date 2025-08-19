@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('expiration_date')->nullable();// Fecha de expiración
             $table->string('card_type')->enum('VISA','MASTERCARD','AMEX','OTHER');
             $table->decimal('available_balance', 12, 2)->default(0.00);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
