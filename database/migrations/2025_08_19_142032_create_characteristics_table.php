@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('characteristics', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('brand')->nullable();
+            $table->string('model')->nullable();
+            $table->string('size')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('material')->nullable();
+            $table->string('dimensions')->nullable();
+            $table->string('origin')->nullable();
             $table->timestamps();
         });
     }
