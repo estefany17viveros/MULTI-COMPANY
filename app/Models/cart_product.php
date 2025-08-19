@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\product;
 use App\Models\cart;
+use App\Models\order;
 
 class cart_product extends Model
 {
@@ -30,6 +31,6 @@ class cart_product extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'cart_product_id');
+        return $this->hasMany(order::class, 'cart_product_id');
     }
 }
