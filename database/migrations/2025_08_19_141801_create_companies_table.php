@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name', 150);
+    $table->string('tax_id', 50)->unique(); // NIT o RUT
+    $table->string('website_url')->nullable();
+    $table->string('email', 150)->unique();
+    $table->string('address', 255)->nullable();
+    $table->string('phone_number', 20)->nullable();
+   $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+    $table->timestamps();
+
+
         });
     }
 

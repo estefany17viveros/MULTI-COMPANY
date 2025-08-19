@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\state;
-use App\Http\Requests\StorestateRequest;
-use App\Http\Requests\UpdatestateRequest;
+use App\Models\warehouse;
+use App\Http\Requests\StorewarehouseRequest;
+use App\Http\Requests\UpdatewarehouseRequest;
 
-class StateController extends Controller
+class WarehouseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class StateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorestateRequest $request)
+    public function store(StorewarehouseRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class StateController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(state $state)
+    public function show(warehouse $warehouse)
     {
         //
     }
@@ -43,7 +43,7 @@ class StateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(state $state)
+    public function edit(warehouse $warehouse)
     {
         //
     }
@@ -51,7 +51,7 @@ class StateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatestateRequest $request, state $state)
+    public function update(UpdatewarehouseRequest $request, warehouse $warehouse)
     {
         //
     }
@@ -59,7 +59,7 @@ class StateController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(state $state)
+    public function destroy(warehouse $warehouse)
     {
         //
     }

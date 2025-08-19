@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('paymentmethods', function (Blueprint $table) {
             $table->id();
+            $table->string('cardholder_name');// Nombre del titular
+            $table->string('card_number');// Número de tarjeta
+            $table->timestamp('expiration_date')->nullable();// Fecha de expiración
+            $table->string('card_type')->enum('VISA','MASTERCARD','AMEX','OTHER');
+            $table->decimal('available_balance', 12, 2)->default(0.00);
             $table->timestamps();
         });
     }
