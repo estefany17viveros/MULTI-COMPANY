@@ -523,7 +523,7 @@
         <div class="hero-content">
             <h1>Compra los mejores productos</h1>
             <p>Descubre nuestra colección exclusiva y encuentra lo que necesitas para tu hogar, estilo y tecnología.</p>
-            <a href="#" class="cta-button">Explorar Productos</a>
+            <a href="/products" class="cta-button">Explorar Productos</a>
         </div>
     </section>
 

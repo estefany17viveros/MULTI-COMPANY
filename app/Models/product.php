@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\cart_product;
+use App\Models\cart;
 use App\Models\media;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use App\Models\review;
@@ -43,9 +43,9 @@ class product extends Model
         'status',
     ];
 
-    public function cartsProducts()
+    public function Carts()
     {
-        return $this->hasMany(cart_product::class);
+        return $this->belongsToMany(cartt::class);
     }
 
     public function reviews()
