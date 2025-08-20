@@ -27,9 +27,10 @@
                         <div class="card-body">
                             <h5 class="card-title d-flex justify-content-between align-items-center">
                                 {{ $product->name }}
-                                <span class="status-badge {{ $product->status === 'activo' ? 'status-active' : 'status-inactive' }}">
-                                    {{ ucfirst($product->status) }}
-                                </span>
+                                <span class="status-badge status-{{ $product->status }}">
+    {{ ucfirst($product->status) }}
+</span>
+
                             </h5>
                             <p class="card-text"><strong>ID:</strong> {{ $product->id }}</p>
                             <p class="card-text price"><strong>Precio:</strong> ${{ number_format($product->unit_price, 2) }}</p>
@@ -170,22 +171,34 @@
         border: none;
     }
 
-    /* Estado */
-    .status-badge {
-        padding: 6px 12px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-    }
+    /* Estados de productos */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
 
-    .status-active {
-        background-color: rgba(16, 185, 129, 0.15);
-        color: var(--dark-green);
-    }
+/* Verde para activo / aprobado */
+.status-activo,
+.status-aprobado {
+    background-color: rgba(16, 185, 129, 0.15); /* verde claro */
+    color: var(--dark-green); /* verde oscuro */
+}
 
-    .status-inactive {
-        background-color: rgba(239, 68, 68, 0.15);
-        color: #991b1b;
-    }
+/* Amarillo para pendiente */
+.status-pendiente {
+    background-color: rgba(250, 204, 21, 0.15); /* amarillo suave */
+    color: #b45309; /* amarillo oscuro / marrón */
+}
+
+/* Rojo para rechazado / inactivo */
+.status-rechazado,
+.status-inactivo {
+    background-color: rgba(239, 68, 68, 0.15); /* rojo suave */
+    color: #991b1b; /* rojo oscuro */
+}
+
 </style>
 @endsection

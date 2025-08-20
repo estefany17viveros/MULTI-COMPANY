@@ -18,6 +18,54 @@
                     </span>
                 </p>
                 <p><strong>🏬 ID de Sucursal:</strong> {{ $product->branch_id }}</p>
+
+                {{-- Sección de Características --}}
+                <h3 class="text-success mt-4">Características</h3>
+                @if($product->characteristicsCategoryProducts->isNotEmpty())
+                    <ul class="list-group">
+                        @foreach($product->characteristicsCategoryProducts as $ccp)
+                            <li class="list-group-item">
+                                <strong>{{ $ccp->characteristics?->name ?? 'N/A' }}</strong>
+
+                                @if(!empty($ccp->characteristics?->brand))
+                                    - Marca: {{ $ccp->characteristics->brand }}
+                                @endif
+
+                                @if(!empty($ccp->characteristics?->model))
+                                    - Modelo: {{ $ccp->characteristics->model }}
+                                @endif
+
+                                @if(!empty($ccp->characteristics?->size))
+                                    - Tamaño: {{ $ccp->characteristics->size }}
+                                @endif
+
+                                @if(!empty($ccp->characteristics?->weight))
+                                    - Peso: {{ $ccp->characteristics->weight }}
+                                @endif
+
+                                @if(!empty($ccp->characteristics?->material))
+                                    - Material: {{ $ccp->characteristics->material }}
+                                @endif
+
+                                @if(!empty($ccp->characteristics?->dimensions))
+                                    - Dimensiones: {{ $ccp->characteristics->dimensions }}
+                                @endif
+
+                                @if(!empty($ccp->characteristics?->origin))
+                                    - Origen: {{ $ccp->characteristics->origin }}
+                                @endif
+
+                                <br>
+                                <small class="text-muted">
+                                    Categoría: {{ $ccp->category?->name ?? 'N/A' }}
+                                </small>
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p class="text-muted">Este producto no tiene características asignadas todavía.</p>
+                @endif
+
             </div>
             <div class="card-footer d-flex justify-content-end">
                 <a href="{{ route('products.index') }}" class="btn btn-secondary btn-modern">↩️ Volver</a>

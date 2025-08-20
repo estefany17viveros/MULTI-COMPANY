@@ -59,10 +59,21 @@ class product extends Model
         return $this->morphMany(media::class, 'mediable');
     }
 
-    public function characteristics_category_products()
+    public function characteristicsCategoryProducts()
     {
         return $this->hasMany(characteristics_category_product::class, 'product_id');
     }
+
+    public function characteristics()
+    {
+        return $this->belongsToMany(
+            characteristics::class,
+            'characteristics_category_product',
+            'product_id',
+            'characteristics_id'
+        );
+    }
+
 
 
     public function scopeIncluded(Builder $query)
