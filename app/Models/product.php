@@ -9,6 +9,7 @@ use App\Models\media;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use App\Models\review;
 use App\Models\characteristics_category_product;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class product extends Model
@@ -45,7 +46,7 @@ class product extends Model
 
     public function Carts()
     {
-        return $this->belongsToMany(cartt::class);
+        return $this->belongsToMany(cart::class);
     }
 
     public function reviews()
