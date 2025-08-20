@@ -36,6 +36,9 @@ Route::get('bodega', function () {
     return view('bodega');
 });
 
+Route::get('products', function () {
+    return view('products.index');
+});
 
 
 Route::resource('products', ProductController::class);
