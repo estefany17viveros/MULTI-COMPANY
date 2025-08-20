@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::resource('products', ProductController::class);
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::resource('characteristics', CharacteristicsController::class);
+Route::view('/offers', 'offers')->name('offers');
+Route::view('/contacts', 'contacts')->name('contacts');
 
 
 

@@ -127,8 +127,8 @@
         <nav class="nav-menu">
             <a href="{{ url('/') }}">Inicio</a>
             <a href="{{ route('products.index') }}">Productos</a>
-            <a href="#">Ofertas</a>
-            <a href="#">Contacto</a>
+            <a href="/offers">Ofertas</a>
+            <a href="/contacts">Contacto</a>
         </nav>
         <div class="user-actions">
             <a href="#"><img src="https://img.icons8.com/material-rounded/24/1E7C4F/search--v1.png" alt="Buscar" /></a>
