@@ -490,8 +490,8 @@
     <nav class="nav-menu">
         <a href="#">Inicio</a>
         <a href="#">Tienda</a>
-        <a href="#">Ofertas</a>
-        <a href="#">Contacto</a>
+        <a href="/offers">Ofertas</a>
+        <a href="/contacts">Contacto</a>
     </nav>
     <div class="user-actions">
         <a href="#"><img src="https://img.icons8.com/material-rounded/24/1E7C4F/search--v1.png" alt="Buscar" /></a>
