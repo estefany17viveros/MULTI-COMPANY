@@ -3,158 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Mi Tienda')</title>
-
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <title>Multicompany</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        :root {
-            --primary-green: #1E7C4F;
-            --light-green: #A3D9A5;
-            --background-color: #A3D9A5;
-            --border-radius-large: 30px;
-        }
-
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--background-color);
-            margin: 0;
-            color: #333;
+            background-color: #f8f9fa;
         }
-
-        /* === HEADER del home === */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background: white;
-            border-radius: 0 0 var(--border-radius-large) var(--border-radius-large);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        .logo a {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-green);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .logo a:hover { color: var(--light-green); }
-
-        .nav-menu {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-menu a {
-            color: var(--primary-green);
-            font-weight: bold;
-            text-decoration: none;
-            transition: color 0.3s, transform 0.2s;
-            position: relative;
-        }
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--light-green);
-            transition: width 0.3s;
-        }
-        .nav-menu a:hover {
-            color: var(--light-green);
-            transform: scale(1.05);
-        }
-        .nav-menu a:hover::after { width: 100%; }
-
-        .user-actions {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        .user-actions img { cursor: pointer; transition: transform 0.3s; }
-        .user-actions img:hover { transform: scale(1.2); }
-
-        .login-button,
-        .register-button {
-            border: 2px solid var(--primary-green);
-            border-radius: 20px;
-            padding: 6px 16px;
-            font-weight: bold;
-            color: var(--primary-green);
-            text-decoration: none;
-            transition: background 0.3s, color 0.3s, transform 0.3s;
-        }
-        .login-button:hover,
-        .register-button:hover {
-            background: var(--primary-green);
+        .sidebar {
+            min-height: 100vh;
+            background: #343a40;
             color: white;
-            transform: scale(1.05);
+            padding-top: 20px;
         }
-
-        /* === FOOTER del home === */
-        footer {
-            background-color: var(--primary-green);
+        .sidebar .nav-link {
+            color: #adb5bd;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover {
+            background: #495057;
             color: white;
-            text-align: center;
-            padding: 20px 0;
-            border-radius: var(--border-radius-large) var(--border-radius-large) 0 0;
-            margin-top: 50px;
+            border-radius: 5px;
         }
-        footer a {
+        .main-content {
+            padding: 20px;
+        }
+        .floating {
             color: white;
-            margin: 0 10px;
-            text-decoration: none;
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        footer a:hover {
-            opacity: 0.8;
-            transform: scale(1.05);
         }
     </style>
-
-    @stack('styles')
 </head>
 <body>
+    <div class="main-container">
+        <div class="row g-0">
+            <!-- Sidebar -->
+            <div class="col-lg-2 sidebar">
+                <div class="text-center mb-4 mt-3 floating">
+                    <h4><i class="fas fa-warehouse me-2"></i>Multicompany</h4>
+                    <p class="small">Sistema de gestión</p>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link @yield('dashboard_active')" href="{{ route('dashboard') }}">
+                            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('warehouses_active')" href="{{ route('warehouses.index') }}">
+                            <i class="fas fa-warehouse me-2"></i> Almacenes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('companies_active')" href="{{ route('companies.index') }}">
+                            <i class="fas fa-building me-2"></i> Empresas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('branches_active')" href="{{ route('branches.index') }}">
+                            <i class="fas fa-code-branch me-2"></i> Sucursales
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('inventory_active')" href="{{ route('inventory.index') }}">
+                            <i class="fas fa-boxes me-2"></i> Inventario
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('requests_active')" href="{{ route('requests.index') }}">
+                            <i class="fas fa-shopping-cart me-2"></i> Solicitudes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('settings_active')" href="{{ route('settings') }}">
+                            <i class="fas fa-cog me-2"></i> Configuración
+                        </a>
+                    </li>
+                    <li class="nav-item mt-4">
+                        <a class="nav-link" href="{{ route('logout') }}">
+                            <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-    <!-- HEADER -->
-    <header>
-        <div class="logo">
-            <a href="{{ url('/') }}">Mi Tienda</a>
+            <!-- Main Content -->
+            <div class="col-lg-10 main-content">
+                @yield('content')
+            </div>
         </div>
-        <nav class="nav-menu">
-            <a href="{{ url('/') }}">Inicio</a>
-            <a href="{{ route('products.index') }}">Productos</a>
-            <a href="/offers">Ofertas</a>
-            <a href="/contacts">Contacto</a>
-        </nav>
-        <div class="user-actions">
-            <a href="#"><img src="https://img.icons8.com/material-rounded/24/1E7C4F/search--v1.png" alt="Buscar" /></a>
-            <a href="#"><img src="https://img.icons8.com/material-rounded/24/1E7C4F/shopping-cart.png" alt="Carrito" /></a>
-            <a href="#" class="login-button">Login</a>
-            <a href="#" class="register-button">Register</a>
-        </div>
-    </header>
+    </div>
 
-    <!-- CONTENIDO -->
-    <main class="container py-4">
-        @yield('content')
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; {{ date('Y') }} Mi Tienda. Todos los derechos reservados.</p>
-        <p>
-            <a href="#">Política de Privacidad</a> |
-            <a href="#">Términos de Servicio</a> |
-            <a href="#">Contacto</a>
-        </p>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    @stack('scripts')
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
