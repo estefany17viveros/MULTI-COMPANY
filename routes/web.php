@@ -15,7 +15,6 @@ Route::get('/', function () {
 });
 
 
-<<<<<<< HEAD
 Route::resource('products', ProductController::class);
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::resource('characteristics', CharacteristicsController::class);
@@ -25,8 +24,6 @@ Route::view('/contacts', 'contacts')->name('contacts');
 
 
 
-
-=======
 Route::get('/login', function () {
     return view('login');
 });
@@ -41,4 +38,3 @@ Route::get('/empresa', function () {
 Route::get('/inventario', function () {
     return view('inventario');
 });
->>>>>>> 840f9303a4dd39e1819c9485bcc8cb33e88cc19d
