@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\characteristics_category_product;
 
+
 class characteristics extends Model
 {
     /** @use HasFactory<\Database\Factories\CharacteristicsFactory> */
@@ -46,15 +47,15 @@ class characteristics extends Model
 
     public function characteristicsCategoryProducts()
     {
-        return $this->hasMany(characteristics_category_product::class, 'characteristics_id');
+        return $this->hasMany(characteristics_category_product::class, 'characteristic_id');
     }
 
     public function products()
     {
         return $this->belongsToMany(
             product::class,
-            'characteristics_category_product',
-            'characteristics_id',
+            'characteristics_category_products',
+            'characteristic_id',
             'product_id'
         );
     }

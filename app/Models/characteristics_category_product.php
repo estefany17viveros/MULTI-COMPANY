@@ -44,7 +44,7 @@ class characteristics_category_product extends Model
 
     public function characteristics()
     {
-        return $this->belongsTo(characteristics::class, 'characteristics_id');
+        return $this->belongsTo(characteristics::class, 'characteristic_id');
     }
 
     public function scopeIncluded(Builder $query)

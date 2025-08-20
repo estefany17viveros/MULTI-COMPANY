@@ -23,7 +23,7 @@ class CharacteristicsController extends Controller
      */
     public function create()
     {
-        return view('characteristics.create');
+        return view('products.create');
     }
 
     /**

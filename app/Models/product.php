@@ -68,9 +68,9 @@ class product extends Model
     {
         return $this->belongsToMany(
             characteristics::class,
-            'characteristics_category_product',
+            'characteristics_category_products',
             'product_id',
-            'characteristics_id'
+            'characteristic_id'
         );
     }
 

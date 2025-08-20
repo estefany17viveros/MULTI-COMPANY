@@ -5,13 +5,13 @@
     <div class="main-content">
 
         <!-- Botón crear -->
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-4">
             <a href="{{ route('products.create') }}" class="btn btn-primary">➕ Crear nuevo producto</a>
         </div>
 
         <!-- Mensaje de éxito -->
         @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+            <div class="alert alert-success fade-in">{{ session('success') }}</div>
         @endif
 
         <!-- Grid de productos -->
@@ -31,14 +31,14 @@
                                     {{ ucfirst($product->status) }}
                                 </span>
                             </h5>
-                            <p class="card-text"><strong>ID:</strong> {{ $product->id }}</p>
+                            <p class="card-text text-muted"><strong>ID:</strong> #{{ $product->id }}</p>
                             <p class="card-text price"><strong>Precio:</strong> ${{ number_format($product->unit_price, 2) }}</p>
                         </div>
 
-                        <div class="card-footer text-end action-buttons">
+                        <div class="card-footer text-center action-buttons">
                             <a href="{{ route('products.show', $product) }}" class="btn btn-info btn-sm">👁️ Ver</a>
                             <a href="{{ route('products.edit', $product) }}" class="btn btn-warning btn-sm">✏️ Editar</a>
-                            <form action="{{ route('products.destroy', $product) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro?')">
+                            <form action="{{ route('products.destroy', $product) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de eliminar este producto?')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-sm">🗑️ Eliminar</button>
@@ -48,7 +48,7 @@
                 </div>
             @empty
                 <div class="col-12">
-                    <div class="alert alert-warning text-center">
+                    <div class="alert alert-warning text-center fade-in">
                         ⚠️ No hay productos registrados.
                     </div>
                 </div>
@@ -62,22 +62,27 @@
     :root {
         --primary-green: #1E7C4F;
         --light-green: #A3D9A5;
-        --background-color: #E6F3E6;
-        --card-bg-color: #F8FFF8;
+        --background: #f4fdf5;
+        --card-bg: #ffffff;
         --dark-green: #065f46;
         --warning: #f59e0b;
         --danger: #ef4444;
         --info: #0ea5e9;
     }
 
+    body {
+        background-color: var(--background);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     .main-container {
-        background: white;
-        border-radius: 25px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         max-width: 1400px;
         margin: 40px auto;
         padding: 20px;
-        animation: fadeIn 1s forwards;
+        border-radius: 25px;
+        background: var(--card-bg);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        animation: fadeIn 0.8s forwards;
         opacity: 0;
     }
 
@@ -85,18 +90,18 @@
         to { opacity: 1; }
     }
 
-    .main-content {
-        background-color: var(--card-bg-color);
-        border-radius: 20px;
-        padding: 25px;
+    .section-title {
+        font-weight: 700;
+        color: var(--dark-green);
     }
 
     .product-card {
         border: none;
         border-radius: 20px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        overflow: hidden;
+        background: var(--card-bg);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background: var(--card-bg-color);
     }
 
     .product-card:hover {
@@ -105,27 +110,20 @@
     }
 
     .product-img {
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
         height: 220px;
         object-fit: cover;
-    }
-
-    .card-title {
-        font-weight: bold;
-        color: var(--dark-green);
     }
 
     .price {
         color: var(--primary-green);
         font-size: 16px;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .btn {
-        border-radius: 12px;
+        border-radius: 10px;
         font-weight: 600;
-        padding: 8px 14px;
+        padding: 6px 12px;
         transition: transform 0.2s, box-shadow 0.3s;
     }
 
@@ -137,33 +135,37 @@
     .btn-primary {
         background: linear-gradient(135deg, var(--light-green), var(--primary-green));
         border: none;
+        color: white;
     }
 
     .btn-info {
         background: linear-gradient(135deg, var(--info), #0284c7);
         border: none;
+        color: white;
     }
 
     .btn-warning {
         background: linear-gradient(135deg, var(--warning), #d97706);
         border: none;
+        color: white;
     }
 
     .btn-danger {
         background: linear-gradient(135deg, var(--danger), #dc2626);
         border: none;
+        color: white;
     }
 
     .status-badge {
-        padding: 6px 12px;
-        border-radius: 20px;
+        padding: 5px 12px;
+        border-radius: 15px;
         font-size: 12px;
         font-weight: 600;
         text-transform: capitalize;
     }
 
-    .status-activo,
-    .status-aprobado {
+    .status-aprobado,
+    .status-activo {
         background-color: rgba(16, 185, 129, 0.15);
         color: var(--dark-green);
     }
@@ -177,6 +179,10 @@
     .status-inactivo {
         background-color: rgba(239, 68, 68, 0.15);
         color: #991b1b;
+    }
+
+    .fade-in {
+        animation: fadeIn 1s ease-in-out;
     }
 </style>
 @endpush
