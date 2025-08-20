@@ -238,53 +238,58 @@
     <div class="main-container">
         <div class="row g-0">
             <!-- Sidebar -->
-            <div class="col-lg-2 sidebar">
-                <div class="text-center mb-4 mt-3 floating">
-                    <h4><i class="fas fa-warehouse me-2"></i>Multicompany</h4>
-                    <p class="small">Sistema de gestión</p>
-                </div>
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-tachometer-alt me-2"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <i class="fas fa-warehouse me-2"></i> Almacenes
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="empresa">
-                            <i class="fas fa-building me-2"></i> Empresas
-                        </a>
-                    </li>
-                    <li class="nav-item">
+            <div class="col-lg-2">
+                <div class="sidebar">
+                    <div class="text-center p-4">
+                        <img src="https://ui-avatars.com/api/?name=Empresa+XYZ&background=10b981&color=fff&size=80" 
+                             alt="Logo" class="img-fluid rounded-circle user-avatar">
+                        <h5 class="mt-3">Empresa XYZ</h5>
+                        <p class="text-white-50">Administrador</p>
+                    </div>
+                    <hr class="mx-3 my-2 bg-white">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="products">
+                                <i class="fas fa-tachometer-alt me-2"></i> Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="fas fa-boxes me-2"></i> Almacenes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="empresa">
+                                <i class="fas fa-building me-2"></i> Empresas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inventario">
+                                <i class="fas fa-file-invoice me-2"></i> Inventario
+                            </a>
+                        </li>
+                        <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="fas fa-code-branch me-2"></i> Sucursales
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="inventario">
-                            <i class="fas fa-boxes me-2"></i> Inventario
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-shopping-cart me-2"></i> Solicitudes
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="configuracion">
-                            <i class="fas fa-cog me-2"></i> Configuración
-                        </a>
-                    </li>
-                    <li class="nav-item mt-4">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
-                        </a>
-                    </li>
-                </ul>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-users me-2"></i> Usuario
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-cog me-2"></i> Configuración
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Main Content -->

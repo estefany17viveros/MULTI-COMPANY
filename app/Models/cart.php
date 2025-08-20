@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\cart_product;
+use Illuminate\Database\Eloquent\Builder; 
+use App\Models\product;
 
 class cart extends Model
 {
@@ -27,10 +28,11 @@ class cart extends Model
     ];
 
 
-    public function cartsProducts()
+    public function products()
     {
-        return $this->hasMany(cart_product::class);
+        return $this->belongsToMany(Product::class);
     }
+
 
     public function scopeIncluded(Builder $query)
     {

@@ -44,10 +44,21 @@ class characteristics extends Model
         'origin',
     ];
 
-    public function characteristics_category_products()
+    public function characteristicsCategoryProducts()
     {
         return $this->hasMany(characteristics_category_product::class, 'characteristics_id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(
+            product::class,
+            'characteristics_category_product',
+            'characteristics_id',
+            'product_id'
+        );
+    }
+
 
     public function scopeIncluded(Builder $query)
     {

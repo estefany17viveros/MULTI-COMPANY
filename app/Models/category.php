@@ -28,6 +28,11 @@ class category extends Model
         return $this->hasMany(characteristics_category_product::class, 'category_id');
     }
 
+    public function products()
+    {
+        return $this->hasMany(product::class);
+    }
+
     public function scopeIncluded(Builder $query)
     {
         $allowIncluded = $this->getAllowIncluded();

@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\cart_product;
+use App\Models\cart;
 use App\Models\media;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use App\Models\review;
 use App\Models\characteristics_category_product;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class product extends Model
@@ -43,9 +44,9 @@ class product extends Model
         'status',
     ];
 
-    public function cartsProducts()
+    public function Carts()
     {
-        return $this->hasMany(cart_product::class);
+        return $this->belongsToMany(cart::class);
     }
 
     public function reviews()
@@ -58,10 +59,21 @@ class product extends Model
         return $this->morphMany(media::class, 'mediable');
     }
 
-    public function characteristics_category_products()
+    public function characteristicsCategoryProducts()
     {
         return $this->hasMany(characteristics_category_product::class, 'product_id');
     }
+
+    public function characteristics()
+    {
+        return $this->belongsToMany(
+            characteristics::class,
+            'characteristics_category_product',
+            'product_id',
+            'characteristics_id'
+        );
+    }
+
 
 
     public function scopeIncluded(Builder $query)

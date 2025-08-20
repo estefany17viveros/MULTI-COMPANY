@@ -5,62 +5,73 @@ namespace App\Http\Controllers;
 use App\Models\product;
 use App\Http\Requests\StoreproductRequest;
 use App\Http\Requests\UpdateproductRequest;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $products = product::all();
+        return view('products.index', compact('products'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Mostrar formulario para crear un nuevo producto
     public function create()
     {
-        //
+        return view('products.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreproductRequest $request)
+    // Guardar un nuevo producto en la base de datos
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'branch_id' => 'required|integer|exists:branches,id',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'barcode' => 'nullable|string|unique:products,barcode',
+            'unit_price' => 'required|numeric|min:0',
+            'status' => 'required|in:pendiente,aprobado,rechazado',
+        ]);
+
+        product::create($validated);
+
+        return redirect()->route('products.index')->with('success', 'Producto creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // Mostrar un solo producto
     public function show(product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Mostrar formulario para editar un producto
     public function edit(product $product)
     {
-        //
+        return view('products.edit', compact('product'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateproductRequest $request, product $product)
+    // Actualizar un producto en la base de datos
+    public function update(Request $request, product $product)
     {
-        //
+        $validated = $request->validate([
+            'branch_id' => 'required|integer|exists:branches,id',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'barcode' => 'nullable|string|unique:products,barcode,' . $product->id,
+            'unit_price' => 'required|numeric|min:0',
+            'status' => 'required|in:pendiente,aprobado,rechazado',
+        ]);
+
+        $product->update($validated);
+
+        return redirect()->route('products.index')->with('success', 'Producto actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Eliminar un producto
     public function destroy(product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', 'Producto eliminado correctamente.');
     }
 }

@@ -5,62 +5,99 @@ namespace App\Http\Controllers;
 use App\Models\characteristics;
 use App\Http\Requests\StorecharacteristicsRequest;
 use App\Http\Requests\UpdatecharacteristicsRequest;
+use Illuminate\Http\Request;
 
 class CharacteristicsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar todas las características.
      */
     public function index()
     {
-        //
+        $characteristics = characteristics::all();
+        return view('characteristics.index', compact('characteristics'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar formulario para crear una nueva característica.
      */
     public function create()
     {
-        //
+        return view('characteristics.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guardar una nueva característica en la base de datos.
      */
-    public function store(StorecharacteristicsRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'brand' => 'nullable|string|max:255',
+            'model' => 'nullable|string|max:255',
+            'size' => 'nullable|string|max:255',
+            'weight' => 'nullable|string|max:255',
+            'material' => 'nullable|string|max:255',
+            'dimensions' => 'nullable|string|max:255',
+            'origin' => 'nullable|string|max:255',
+        ]);
+
+        characteristics::create($request->only([
+            'name', 'brand', 'model', 'size', 'weight', 'material', 'dimensions', 'origin'
+        ]));
+
+        return redirect()->route('characteristics.index')
+                         ->with('success', 'Característica creada correctamente.');
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar una característica específica.
      */
-    public function show(characteristics $characteristics)
+    public function show(characteristics $characteristic)
     {
-        //
+        return view('characteristics.show', compact('characteristic'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar formulario para editar una característica.
      */
-    public function edit(characteristics $characteristics)
+    public function edit(characteristics $characteristic)
     {
-        //
+        return view('characteristics.edit', compact('characteristic'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar una característica en la base de datos.
      */
-    public function update(UpdatecharacteristicsRequest $request, characteristics $characteristics)
+    public function update(Request $request, characteristics $characteristic)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'brand' => 'nullable|string|max:255',
+            'model' => 'nullable|string|max:255',
+            'size' => 'nullable|string|max:255',
+            'weight' => 'nullable|string|max:255',
+            'material' => 'nullable|string|max:255',
+            'dimensions' => 'nullable|string|max:255',
+            'origin' => 'nullable|string|max:255',
+        ]);
+
+        $characteristic->update($request->only([
+            'name', 'brand', 'model', 'size', 'weight', 'material', 'dimensions', 'origin'
+        ]));
+
+        return redirect()->route('characteristics.index')
+                         ->with('success', 'Característica actualizada correctamente.');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar una característica.
      */
-    public function destroy(characteristics $characteristics)
+    public function destroy(characteristics $characteristic)
     {
-        //
+        $characteristic->delete();
+
+        return redirect()->route('characteristics.index')
+                         ->with('success', 'Característica eliminada correctamente.');
     }
 }
