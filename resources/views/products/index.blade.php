@@ -28,9 +28,8 @@
                             <h5 class="card-title d-flex justify-content-between align-items-center">
                                 {{ $product->name }}
                                 <span class="status-badge status-{{ $product->status }}">
-    {{ ucfirst($product->status) }}
-</span>
-
+                                    {{ ucfirst($product->status) }}
+                                </span>
                             </h5>
                             <p class="card-text"><strong>ID:</strong> {{ $product->id }}</p>
                             <p class="card-text price"><strong>Precio:</strong> ${{ number_format($product->unit_price, 2) }}</p>
@@ -58,7 +57,7 @@
     </div>
 </div>
 
-<!-- Estilos -->
+@push('styles')
 <style>
     :root {
         --primary-green: #1E7C4F;
@@ -69,11 +68,6 @@
         --warning: #f59e0b;
         --danger: #ef4444;
         --info: #0ea5e9;
-    }
-
-    body {
-        background: var(--background-color);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .main-container {
@@ -97,16 +91,6 @@
         padding: 25px;
     }
 
-    .header {
-        background: linear-gradient(135deg, var(--light-green), var(--primary-green));
-        color: white;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        text-align: center;
-    }
-
-    /* Cards de productos */
     .product-card {
         border: none;
         border-radius: 20px;
@@ -138,7 +122,6 @@
         font-weight: 600;
     }
 
-    /* Botones */
     .btn {
         border-radius: 12px;
         font-weight: 600;
@@ -171,34 +154,30 @@
         border: none;
     }
 
-    /* Estados de productos */
-.status-badge {
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: capitalize;
-}
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
 
-/* Verde para activo / aprobado */
-.status-activo,
-.status-aprobado {
-    background-color: rgba(16, 185, 129, 0.15); /* verde claro */
-    color: var(--dark-green); /* verde oscuro */
-}
+    .status-activo,
+    .status-aprobado {
+        background-color: rgba(16, 185, 129, 0.15);
+        color: var(--dark-green);
+    }
 
-/* Amarillo para pendiente */
-.status-pendiente {
-    background-color: rgba(250, 204, 21, 0.15); /* amarillo suave */
-    color: #b45309; /* amarillo oscuro / marrón */
-}
+    .status-pendiente {
+        background-color: rgba(250, 204, 21, 0.15);
+        color: #b45309;
+    }
 
-/* Rojo para rechazado / inactivo */
-.status-rechazado,
-.status-inactivo {
-    background-color: rgba(239, 68, 68, 0.15); /* rojo suave */
-    color: #991b1b; /* rojo oscuro */
-}
-
+    .status-rechazado,
+    .status-inactivo {
+        background-color: rgba(239, 68, 68, 0.15);
+        color: #991b1b;
+    }
 </style>
+@endpush
 @endsection
