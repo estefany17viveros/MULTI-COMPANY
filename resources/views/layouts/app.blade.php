@@ -319,7 +319,7 @@
     </div>
     <nav class="sidebar-nav">
       <ul>
-        <li><a class="nav-link" href="product"><i class="fas fa-tachometer-alt"></i><span class="nav-text">Productos</span></a></li>
+        <li><a class="nav-link" href="products"><i class="fas fa-tachometer-alt"></i><span class="nav-text">Productos</span></a></li>
         <li><a class="nav-link active" href="bodega "><i class="fas fa-boxes"></i><span class="nav-text">Bodegas</span></a></li>
         <li><a class="nav-link" href="empresa"><i class="fas fa-building"></i><span class="nav-text">Empresas</span></a></li>
         <li><a class="nav-link" href="inventario"><i class="fas fa-file-invoice"></i><span class="nav-text">Inventario</span></a></li>
