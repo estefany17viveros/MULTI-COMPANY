@@ -346,7 +346,7 @@
 
       <div class="footer-card">
         <h3>📌 Enlaces rápidos</h3>
-        <ul>
+        <ul> z
           <li><a href="#">Inicio</a></li>
           <li><a href="#">Servicios</a></li>
           <li><a href="#">Términos de uso</a></li>
